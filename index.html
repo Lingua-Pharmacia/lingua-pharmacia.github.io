@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 21 Lessons - Lingua Pharmacia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .card { transition: all 0.3s; }
+    .card:hover { transform: scale(1.05); }
+    .sub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); gap: 8px; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <div class="max-w-6xl mx-auto p-6">
+    <h1 class="text-5xl font-bold text-center my-10 text-indigo-700">Top 21 Lessons</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="mainGrid">
+      <!-- Cards will be injected by JS -->
+    </div>
+  </div>
+
+  <script>
+    const lessons = [
+      { title: "Ancient Civilizations", emoji: "🏛️", url: "https://lingua-pharmacia.github.io/21-ancient-civilizations/" },
+      { title: "Car Brands", emoji: "🚘", url: "https://lingua-pharmacia.github.io/21-car-brands/" },
+      { title: "Catastrophies", emoji: "🌋", url: "https://lingua-pharmacia.github.io/21-catastrophies/" },
+      { title: "Dictators", emoji: "👑", url: "https://lingua-pharmacia.github.io/21-dictators/" },
+      { title: "Disasters", emoji: "🔥", url: "https://lingua-pharmacia.github.io/21-disasters/" },
+      { title: "Epic Love Stories", emoji: "❤️", url: "https://lingua-pharmacia.github.io/21-epic-love-stories/" },
+      { title: "Freedom Fighters", emoji: "🗽", url: "https://lingua-pharmacia.github.io/21-freedom-fighters/" },
+      { title: "Hostage Situations", emoji: "🔒", url: "https://lingua-pharmacia.github.io/21-hostage/" },
+      { title: "Humanlike Animal Actions", emoji: "🐵", url: "https://lingua-pharmacia.github.io/21-humanlike-animal-actions/" },
+      { title: "Mafia People", emoji: "🕴️", url: "https://lingua-pharmacia.github.io/21-mafia-people/" },
+      { title: "Most Stupid Deaths", emoji: "💀", url: "https://lingua-pharmacia.github.io/21-mosstupid-deaths/" },
+      { title: "Motorbikes", emoji: "🏍️", url: "https://lingua-pharmacia.github.io/21-motorbikes/" },
+      { title: "Robberies", emoji: "🏴‍☠️", url: "https://lingua-pharmacia.github.io/21-robberies/" },
+      { title: "Secret Operations", emoji: "🕵️", url: "https://lingua-pharmacia.github.io/21-secret-operations/" },
+      { title: "Secret Societies", emoji: "🕴️", url: "https://lingua-pharmacia.github.io/21-secret-societies/" },
+      { title: "Spies", emoji: "🕵️‍♂️", url: "https://lingua-pharmacia.github.io/21-spies/" },
+      { title: "Survivals", emoji: "🏕️", url: "https://lingua-pharmacia.github.io/21-survivals/" },
+      { title: "Swindlers", emoji: "🃏", url: "https://lingua-pharmacia.github.io/21-swindlers/" },
+      { title: "Terror Attacks", emoji: "💣", url: "https://lingua-pharmacia.github.io/21-terror-attacks/" },
+      { title: "Traitors", emoji: "🐍", url: "https://lingua-pharmacia.github.io/21-traitors/" },
+      { title: "World People", emoji: "🌍", url: "https://lingua-pharmacia.github.io/21-world-people/" }
+    ];
+
+    const grid = document.getElementById('mainGrid');
+
+    lessons.forEach(lesson => {
+      const cardHTML = `
+        <div class="bg-white rounded-2xl shadow-md overflow-hidden card">
+          <div onclick="toggleSub(this)" class="p-6 flex items-center gap-6 cursor-pointer">
+            <div class="text-6xl">${lesson.emoji}</div>
+            <div>
+              <h3 class="text-2xl font-semibold">${lesson.title}</h3>
+              <p class="text-sm text-gray-500">Click to preview 21 icons ↓</p>
+            </div>
+          </div>
+          
+          <!-- Sub icons appear here -->
+          <div class="sub-content hidden px-6 pb-6">
+            <div class="sub-grid">
+              ${Array(21).fill(0).map((_, i) => 
+                `<div class="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center text-xl shadow-inner">${i+1}</div>`
+              ).join('')}
+            </div>
+            <a href="${lesson.url}" target="_blank"
+               class="mt-6 block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-2xl text-lg">
+              🚀 Start Full Lesson
+            </a>
+          </div>
+        </div>
+      `;
+      grid.innerHTML += cardHTML;
+    });
+
+    function toggleSub(el) {
+      const sub = el.parentElement.querySelector('.sub-content');
+      sub.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>
